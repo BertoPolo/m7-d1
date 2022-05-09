@@ -46,7 +46,7 @@ const HomePage = () => {
       {/* <input type="text" placeholder="filter by Category" onChange={() => searchJobsByCategory} /> */}
       {/* <input type="text" placeholder="filter by Company" onChange={() => searchJobsByCompany} /> */}
 
-      {jobs !== undefined && <Jobs job={jobs} />}
+      {(jobs !== undefined || null) && <Jobs job={jobs} />}
     </>
   )
 }
