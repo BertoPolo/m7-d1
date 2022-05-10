@@ -2,12 +2,12 @@ import { useState } from "react"
 import Jobs from "./Jobs"
 
 const HomePage = () => {
-  const [jobs, setJobs] = useState()
+  const [jobs, setJobs] = useState([])
   //   const [query, setQuery] = useState()
 
   /*   const searchJobsByCategory = async (filter) => {
     try {
-      const response = await fetch(`https://strive-jobs-api.herokuapp.com/jobs?search=${filter}&limit=10`)
+       const response = await fetch(`https://strive-jobs-api.herokuapp.com/jobs?company=${filter}`)
 
       if (response.ok) {
         setJobs(response)
@@ -30,10 +30,12 @@ const HomePage = () => {
 
   const searchJobsByTitle = async (filter) => {
     try {
-      const response = await fetch(`https://strive-jobs-api.herokuapp.com/jobs?company=${filter}`)
+      const response = await fetch(`https://strive-jobs-api.herokuapp.com/jobs?search=${filter}&limit=2`)
       if (response.ok) {
-        console.log(response)
-        setJobs(response)
+        const { data } = await response.json()
+
+        console.log(data)
+        setJobs(data)
       }
     } catch (error) {
       console.log(error)
@@ -46,7 +48,7 @@ const HomePage = () => {
       {/* <input type="text" placeholder="filter by Category" onChange={() => searchJobsByCategory} /> */}
       {/* <input type="text" placeholder="filter by Company" onChange={() => searchJobsByCompany} /> */}
 
-      {(jobs !== undefined || null) && <Jobs job={jobs} />}
+      {(jobs !== undefined || !null) && jobs.map((element) => <Jobs key={element._id} job={element} />)}
     </>
   )
 }
