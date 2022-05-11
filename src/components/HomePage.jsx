@@ -3,11 +3,10 @@ import Jobs from "./Jobs"
 
 const HomePage = () => {
   const [jobs, setJobs] = useState([])
-  //   const [query, setQuery] = useState()
 
-  /*   const searchJobsByCategory = async (filter) => {
+  const searchJobsByCategory = async (filter) => {
     try {
-       const response = await fetch(`https://strive-jobs-api.herokuapp.com/jobs?company=${filter}`)
+      const response = await fetch(`https://strive-jobs-api.herokuapp.com/jobs?company=${filter}`)
 
       if (response.ok) {
         setJobs(response)
@@ -26,7 +25,7 @@ const HomePage = () => {
     } catch (error) {
       console.log(error)
     }
-  } */
+  }
 
   const searchJobsByTitle = async (filter) => {
     try {
@@ -45,8 +44,8 @@ const HomePage = () => {
   return (
     <>
       <input type="text" placeholder="filter by Title" onChange={(event) => searchJobsByTitle(event.target.value)} />
-      {/* <input type="text" placeholder="filter by Category" onChange={() => searchJobsByCategory} /> */}
-      {/* <input type="text" placeholder="filter by Company" onChange={() => searchJobsByCompany} /> */}
+      <input type="text" placeholder="filter by Category" onChange={(event) => searchJobsByCategory(event.target.value)} />
+      <input type="text" placeholder="filter by Company" onChange={(event) => searchJobsByCompany(event.target.value)} />
 
       {(jobs !== undefined || !null) && jobs.map((element) => <Jobs key={element._id} job={element} />)}
     </>

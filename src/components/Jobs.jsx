@@ -6,10 +6,6 @@ const Jobs = ({ job }) => {
         <Row>
           <p>{job.title}</p>
         </Row>
-        <Row>
-          <p>{job.category}</p>
-        </Row>
-        <Row>{job.description}`</Row>
       </Container>
       <hr />
     </>
