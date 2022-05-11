@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./components/HomePage"
+import SearchResults from "./components/SearchResults"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
 
@@ -10,6 +11,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/:company" element={<SearchResults />} />
           </Routes>
         </BrowserRouter>
       </header>

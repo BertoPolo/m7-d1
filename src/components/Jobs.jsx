@@ -1,12 +1,14 @@
-import { Container, Row } from "react-bootstrap"
+import { Row } from "react-bootstrap"
+import { Link } from "react-router-dom"
+
 const Jobs = ({ job }) => {
   return (
     <>
-      <Container>
-        <Row>
-          <p>{job.title}</p>
-        </Row>
-      </Container>
+      <Row>
+        <Link to={`/:${job.company_name}`}>
+          <p>{job.title}</p> from : <span>{job.company_name}</span>
+        </Link>
+      </Row>
       <hr />
     </>
   )
